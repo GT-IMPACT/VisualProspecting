@@ -24,17 +24,17 @@ import com.sinthoras.visualprospecting.Utils;
 
 import codechicken.nei.NEIClientConfig;
 import codechicken.nei.SearchField;
-import gregtech.api.GregTech_API;
-import gregtech.api.enums.Materials;
-import gregtech.common.GT_Worldgen_GT_Ore_Layer;
+//import gregtech.api.GregTech_API;
+//import gregtech.api.enums.Materials;
+//import gregtech.common.GT_Worldgen_GT_Ore_Layer;
 
 public class VeinTypeCaching implements Runnable {
 
     private static BiMap<Short, VeinType> veinTypeLookupTableForIds = HashBiMap.create();
     private static Map<String, VeinType> veinTypeLookupTableForNames = new HashMap<>();
-    private static Map<String, Short> veinTypeStorageInfo;
-    public static List<VeinType> veinTypes;
-    public static Set<Short> largeVeinOres;
+    private static Map<String, Short> veinTypeStorageInfo = new HashMap<>();;
+    public static List<VeinType> veinTypes = new ArrayList<>();
+    public static Set<Short> largeVeinOres = new HashSet<>();
     private static int longesOreName = 0;
 
     // BartWorks initializes veins in FML preInit
@@ -46,47 +46,47 @@ public class VeinTypeCaching implements Runnable {
         veinTypes = new ArrayList<>();
         largeVeinOres = new HashSet<>();
         veinTypes.add(VeinType.NO_VEIN);
-
-        for (GT_Worldgen_GT_Ore_Layer vein : GT_Worldgen_GT_Ore_Layer.sList) {
-            if (vein.mWorldGenName.equals(Tags.ORE_MIX_NONE_NAME)) {
-                break;
-            }
-            final Materials material = getGregTechMaterial(vein.mPrimaryMeta);
-
-            veinTypes.add(
-                    new VeinType(
-                            vein.mWorldGenName,
-                            new GregTechOreMaterialProvider(material),
-                            vein.mSize,
-                            vein.mPrimaryMeta,
-                            vein.mSecondaryMeta,
-                            vein.mBetweenMeta,
-                            vein.mSporadicMeta,
-                            Math.max(0, vein.mMinY - 6), // GregTech ore veins start at layer -1 and the blockY RNG adds
-                                                         // another -5
-                            // offset
-                            Math.min(255, vein.mMaxY - 6)));
-        }
-
-        if (isBartworksInstalled()) {
-            for (BW_OreLayer vein : BW_OreLayer.sList) {
-                final IOreMaterialProvider oreMaterialProvider = (vein.bwOres & 0b1000) == 0
-                        ? new GregTechOreMaterialProvider(getGregTechMaterial((short) vein.mPrimaryMeta))
-                        : new BartworksOreMaterialProvider(Werkstoff.werkstoffHashMap.get((short) vein.mPrimaryMeta));
-
-                veinTypes.add(
-                        new VeinType(
-                                vein.mWorldGenName,
-                                oreMaterialProvider,
-                                vein.mSize,
-                                (short) vein.mPrimaryMeta,
-                                (short) vein.mSecondaryMeta,
-                                (short) vein.mBetweenMeta,
-                                (short) vein.mSporadicMeta,
-                                Math.max(0, vein.mMinY),
-                                Math.min(255, vein.mMaxY)));
-            }
-        }
+//
+//        for (GT_Worldgen_GT_Ore_Layer vein : GT_Worldgen_GT_Ore_Layer.sList) {
+//            if (vein.mWorldGenName.equals(Tags.ORE_MIX_NONE_NAME)) {
+//                break;
+//            }
+//            final Materials material = getGregTechMaterial(vein.mPrimaryMeta);
+//
+//            veinTypes.add(
+//                    new VeinType(
+//                            vein.mWorldGenName,
+//                            new GregTechOreMaterialProvider(material),
+//                            vein.mSize,
+//                            vein.mPrimaryMeta,
+//                            vein.mSecondaryMeta,
+//                            vein.mBetweenMeta,
+//                            vein.mSporadicMeta,
+//                            Math.max(0, vein.mMinY - 6), // GregTech ore veins start at layer -1 and the blockY RNG adds
+//                                                         // another -5
+//                            // offset
+//                            Math.min(255, vein.mMaxY - 6)));
+//        }
+//
+//        if (isBartworksInstalled()) {
+//            for (BW_OreLayer vein : BW_OreLayer.sList) {
+//                final IOreMaterialProvider oreMaterialProvider = (vein.bwOres & 0b1000) == 0
+//                        ? new GregTechOreMaterialProvider(getGregTechMaterial((short) vein.mPrimaryMeta))
+//                        : new BartworksOreMaterialProvider(Werkstoff.werkstoffHashMap.get((short) vein.mPrimaryMeta));
+//
+//                veinTypes.add(
+//                        new VeinType(
+//                                vein.mWorldGenName,
+//                                oreMaterialProvider,
+//                                vein.mSize,
+//                                (short) vein.mPrimaryMeta,
+//                                (short) vein.mSecondaryMeta,
+//                                (short) vein.mBetweenMeta,
+//                                (short) vein.mSporadicMeta,
+//                                Math.max(0, vein.mMinY),
+//                                Math.min(255, vein.mMaxY)));
+//            }
+//        }
 
         // Assign veinTypeIds for efficient storage
         loadVeinTypeStorageInfo();
@@ -125,14 +125,14 @@ public class VeinTypeCaching implements Runnable {
         }
     }
 
-    private Materials getGregTechMaterial(short metaId) {
-        final Materials material = GregTech_API.sGeneratedMaterials[metaId];
-        if (material == null) {
-            // Some materials are not registered in dev when their usage mod is not available.
-            return Materials.getAll().stream().filter(m -> m.mMetaItemSubID == metaId).findAny().get();
-        }
-        return material;
-    }
+//    private Materials getGregTechMaterial(short metaId) {
+//        final Materials material = GregTech_API.sGeneratedMaterials[metaId];
+//        if (material == null) {
+//            // Some materials are not registered in dev when their usage mod is not available.
+//            return Materials.getAll().stream().filter(m -> m.mMetaItemSubID == metaId).findAny().get();
+//        }
+//        return material;
+//    }
 
     public static int getLongesOreNameLength() {
         return longesOreName;

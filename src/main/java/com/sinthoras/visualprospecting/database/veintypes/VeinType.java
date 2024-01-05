@@ -1,16 +1,13 @@
 package com.sinthoras.visualprospecting.database.veintypes;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
-
-import net.minecraft.util.EnumChatFormatting;
 
 import com.sinthoras.visualprospecting.Tags;
 
-import gregtech.api.GregTech_API;
+//import gregtech.api.GregTech_API;
 
 public class VeinType {
 
@@ -76,15 +73,9 @@ public class VeinType {
         return blockSize > 16;
     }
 
-    public boolean containsOre(short oreMetaData) {
-        return primaryOreMeta == oreMetaData || secondaryOreMeta == oreMetaData
-                || inBetweenOreMeta == oreMetaData
-                || sporadicOreMeta == oreMetaData;
-    }
 
     public List<String> getOreMaterialNames() {
-        return oresAsSet.stream().map(metaData -> GregTech_API.sGeneratedMaterials[metaData]).filter(Objects::nonNull)
-                .map(material -> EnumChatFormatting.GRAY + material.mLocalizedName).collect(Collectors.toList());
+        return Collections.emptyList();
     }
 
     public Set<Short> getOresAtLayer(int layerBlockY) {

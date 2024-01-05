@@ -25,7 +25,7 @@ import com.google.gson.reflect.TypeToken;
 import com.sinthoras.visualprospecting.hooks.HooksClient;
 
 import cpw.mods.fml.common.Loader;
-import gregtech.common.GT_Worldgenerator;
+//import gregtech.common.GT_Worldgenerator;
 
 public class Utils {
 
@@ -81,7 +81,7 @@ public class Utils {
     }
 
     public static int mapToCenterOreChunkCoord(final int chunkCoord) {
-        if (GT_Worldgenerator.oregenPattern == GT_Worldgenerator.OregenPattern.EQUAL_SPACING) {
+        if (false) {
             // new evenly spaced ore pattern
             return chunkCoord - Math.floorMod(chunkCoord, 3) + 1;
         } else {

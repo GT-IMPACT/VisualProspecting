@@ -22,7 +22,7 @@ import com.sinthoras.visualprospecting.VP;
 import com.sinthoras.visualprospecting.hooks.ProspectingNotificationEvent;
 import com.sinthoras.visualprospecting.network.ProspectingRequest;
 
-import gregtech.common.blocks.GT_TileEntity_Ores;
+//import gregtech.common.blocks.GT_TileEntity_Ores;
 
 public class ClientCache extends WorldCache {
 
@@ -130,20 +130,20 @@ public class ClientCache extends WorldCache {
     public void onOreInteracted(World world, int blockX, int blockY, int blockZ, EntityPlayer entityPlayer) {
         if (world.isRemote && Config.enableProspecting && Minecraft.getMinecraft().thePlayer == entityPlayer) {
             final TileEntity tTileEntity = world.getTileEntity(blockX, blockY, blockZ);
-            if (tTileEntity instanceof GT_TileEntity_Ores) {
-                final short oreMetaData = ((GT_TileEntity_Ores) tTileEntity).mMetaData;
-                if (Utils.isSmallOreId(oreMetaData) == false && oreMetaData != 0) {
-                    final int chunkX = Utils.coordBlockToChunk(blockX);
-                    final int chunkZ = Utils.coordBlockToChunk(blockZ);
-                    final OreVeinPosition oreVeinPosition = getOreVein(entityPlayer.dimension, chunkX, chunkZ);
-                    final short materialId = Utils.oreIdToMaterialId(oreMetaData);
-                    if (oreVeinPosition.veinType.containsOre(materialId) == false
-                            && ProspectingRequest.canSendRequest()) {
-                        VP.network.sendToServer(
-                                new ProspectingRequest(entityPlayer.dimension, blockX, blockY, blockZ, materialId));
-                    }
-                }
-            }
+//            if (tTileEntity instanceof GT_TileEntity_Ores) {
+//                final short oreMetaData = ((GT_TileEntity_Ores) tTileEntity).mMetaData;
+//                if (Utils.isSmallOreId(oreMetaData) == false && oreMetaData != 0) {
+//                    final int chunkX = Utils.coordBlockToChunk(blockX);
+//                    final int chunkZ = Utils.coordBlockToChunk(blockZ);
+//                    final OreVeinPosition oreVeinPosition = getOreVein(entityPlayer.dimension, chunkX, chunkZ);
+//                    final short materialId = Utils.oreIdToMaterialId(oreMetaData);
+//                    if (oreVeinPosition.veinType.containsOre(materialId) == false
+//                            && ProspectingRequest.canSendRequest()) {
+//                        VP.network.sendToServer(
+//                                new ProspectingRequest(entityPlayer.dimension, blockX, blockY, blockZ, materialId));
+//                    }
+//                }
+//            }
         }
     }
 

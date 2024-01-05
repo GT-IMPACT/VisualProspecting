@@ -34,12 +34,12 @@ public class MapState {
             new NTNodeTrackerWaypointManager();
         }
 
-        buttons.add(UndergroundFluidButtonManager.instance);
-        layers.add(UndergroundFluidLayerManager.instance);
-        layers.add(UndergroundFluidChunkLayerManager.instance);
-
-        buttons.add(OreVeinButtonManager.instance);
-        layers.add(OreVeinLayerManager.instance);
+//        buttons.add(UndergroundFluidButtonManager.instance);
+//        layers.add(UndergroundFluidLayerManager.instance);
+//        layers.add(UndergroundFluidChunkLayerManager.instance);
+//
+//        buttons.add(OreVeinButtonManager.instance);
+//        layers.add(OreVeinLayerManager.instance);
 
         if (Config.enableDeveloperOverlays) {
             buttons.add(DirtyChunkButtonManager.instance);
