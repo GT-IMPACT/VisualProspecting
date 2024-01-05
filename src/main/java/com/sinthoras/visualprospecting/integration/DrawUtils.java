@@ -12,9 +12,6 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.client.lib.UtilsFX;
-
 public class DrawUtils {
 
     public static void drawGradientRect(double minPixelX, double minPixelY, double maxPixelX, double maxPixelY,
@@ -94,27 +91,6 @@ public class DrawUtils {
         tessellator.addVertexWithUV(x + width, y, 0.0, icon.getMaxU(), icon.getMinV());
         tessellator.addVertexWithUV(x, y, 0.0, icon.getMinU(), icon.getMinV());
         tessellator.draw();
-    }
-
-    public static void drawAspect(double centerPixelX, double centerPixelY, double pixelSize, Aspect aspect,
-            int amount) {
-        final int textureSize = 16;
-
-        GL11.glPushMatrix();
-        final double scale = pixelSize / textureSize;
-        GL11.glScaled(scale, scale, scale);
-        UtilsFX.drawTag(
-                (centerPixelX - pixelSize / 2) / scale,
-                (centerPixelY - pixelSize / 2) / scale,
-                aspect,
-                amount,
-                0,
-                0,
-                GL11.GL_ONE_MINUS_SRC_ALPHA,
-                1.0F,
-                false);
-        GL11.glDisable(GL11.GL_LIGHTING);
-        GL11.glPopMatrix();
     }
 
     public static void drawSimpleLabel(GuiScreen gui, String text, double textX, double textY, int fontColor,

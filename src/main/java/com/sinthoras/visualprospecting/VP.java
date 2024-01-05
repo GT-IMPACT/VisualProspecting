@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
+@SuppressWarnings("unused")
 public class VP {
 
     public static SimpleNetworkWrapper network;
@@ -16,7 +17,7 @@ public class VP {
 
     public static final Random randomGeneration = new Random();
 
-    private static Logger LOG = LogManager.getLogger(Tags.MODID);
+    private static final Logger LOG = LogManager.getLogger(Tags.MODID);
     public static final int gregTechSmallOreMinimumMeta = 16000;
     public static final int minecraftWorldHeight = 256;
     public static final int chunksPerRegionFileX = 32;

@@ -10,18 +10,6 @@ import cpw.mods.fml.relauncher.FMLLaunchHandler;
 
 public enum Mixins {
 
-//    // Bartworks mixins
-//    WorldGenContainerMixin("bartworks.WorldGenContainerMixin", BARTWORKS),
-//
-//    // Galactic greg mixins
-//    GT_Worldgenerator_SpaceMixin("galacticgreg.GT_Worldgenerator_SpaceMixin", GALACTICGREG),
-//
-//    // Gregtech mixins
-//    GT_Block_Ores_AbstractMixin("gregtech.GT_Block_Ores_AbstractMixin", GT5U),
-//    GT_MetaTileEntity_AdvSeismicProspectorMixin("gregtech.GT_MetaTileEntity_AdvSeismicProspectorMixin", GT5U),
-//    GT_MetaTileEntity_ScannerMixin("gregtech.GT_MetaTileEntity_ScannerMixin", GT5U),
-//    GT_WorldGenContainerMixin("gregtech.WorldGenContainerMixin", GT5U),
-
     // Journeymap mixins
     DisplayVarsAccessorMixin("journeymap.DisplayVarsAccessor", Side.CLIENT, JOURNEYMAP),
     FullscreenAccessorMixin("journeymap.FullscreenAccessor", Side.CLIENT, JOURNEYMAP),
@@ -31,18 +19,9 @@ public enum Mixins {
     RenderWaypointBeaconMixin("journeymap.RenderWaypointBeaconMixin", Side.CLIENT, JOURNEYMAP),
     WaypointManagerMixin("journeymap.WaypointManagerMixin", Side.CLIENT, JOURNEYMAP),
 
-    // TC node tracker mixins
-    GuiMainMixin("tcnodetracker.GuiMainMixin", Side.CLIENT, TCNODETRACKER),
-
-    // Xaerosworldmap & Xaerosminimap mixins
-    GuiMapMixin("xaerosworldmap.GuiMapMixin", Side.CLIENT, XAEROWORLDMAP),
-    WaypointsIngameRendererMixin("xaerosminimap.WaypointsIngameRendererMixin", Side.CLIENT, XAEROMINIMAP),
-    MinimapRendererMixin("xaerosminimap.MinimapRendererMixin", Side.CLIENT, XAEROMINIMAP, XAEROWORLDMAP),
-
     // Vanilla Mixins
     MinecraftServerAccessorMixin("minecraft.MinecraftServerAccessor", Phase.EARLY, Side.BOTH, VANILLA),
-    ForgeHooksClientMixin("minecraft.ForgeHooksClientMixin", Phase.EARLY, Side.CLIENT, XAEROMINIMAP, XAEROWORLDMAP),
-    ItemEditableBookMixin("minecraft.ItemEditableBookMixin", Phase.EARLY, VANILLA);
+    ForgeHooksClientMixin("minecraft.ForgeHooksClientMixin", Phase.EARLY, Side.CLIENT, XAEROMINIMAP, XAEROWORLDMAP);
 
     public final String mixinClass;
     public final Phase phase;

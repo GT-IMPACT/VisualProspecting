@@ -32,6 +32,7 @@ public abstract class LayerRenderer extends com.sinthoras.visualprospecting.inte
         return drawSteps;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void updateVisibleElements(List<? extends ILocationProvider> visibleElements) {
         drawSteps = (List<DrawStep>) mapLocationProviderToDrawStep(visibleElements);
