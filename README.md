@@ -1,6 +1,7 @@
 # VisualProspecting
 
-[![](https://jitpack.io/v/GT-IMPACT/VisualProspecting.svg)](https://jitpack.io/#GT-IMPACT/VisualProspecting)
+[![Latest Release](https://img.shields.io/github/v/tag/GT-IMPACT/VisualProspecting?label=Latest&sort=semver)](https://github.com/GT-IMPACT/VisualProspecting/releases/latest)
+
 
 Add jitpack to your repositories:
 ```gradle
