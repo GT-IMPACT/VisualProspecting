@@ -1,3 +1,0 @@
-dependencies {
-    api('curse.maven:journeymap-32274:4500659')
-}
